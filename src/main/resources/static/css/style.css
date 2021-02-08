@@ -1,0 +1,199 @@
+body {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	background-image: url("../img/background.jpg");
+}
+
+input,
+select,
+textarea {
+	margin-left: 10px;
+	color: #fff;
+}
+select:invalid {
+	color: #7d7d7d;
+}
+select:invalid:focus {
+	color: rgb(125, 125, 125, 0.5);
+}
+select:invalid option:not(:disabled) {
+	color: #fff;
+}
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.gradient {
+	min-height: 100%;
+	min-width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 48%, rgba(2, 2, 2, 0.5) 100%);
+}
+
+.container {
+	margin: 2% auto;
+	max-width: 65%;
+	padding: 2% 4%;
+	border-radius: 10px;
+	background: rgba(177, 177, 177, 0.4);
+	backdrop-filter: blur(1px);
+	color: #fff;
+}
+
+@font-face {
+	font-family: Gotham-Bold;
+	src: url("../fonts/Gotham-Bold.otf");
+}
+
+.ticket-flex {
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.title {
+	margin-bottom: 50px;
+	font-size: 40px;
+	font-family: Gotham-Bold;
+	align-self: center;
+}
+
+.ticket-flex li {
+	display: inherit;
+	flex-wrap: wrap;
+}
+.ticket-flex > li > label {
+	flex: 1 0 auto;
+	justify-content: flex-end;
+	max-width: 20%;
+	margin-right: 35px;
+	max-height: 5%;
+	line-height: 40px;
+	font-size: 25px;
+	font-family: Gotham-Bold;
+}
+.ticket-flex > li > :not(label) {
+	flex: 1 0 auto;
+	display: inline-block;
+	max-width: 80%;
+	min-height: 60px;
+	max-height: 200px;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	resize: none;
+
+	font-size: 20px;
+	line-height: 25px;
+	background-color: rgb(43, 43, 43);
+}
+.ticket-flex > li > :not(label):focus {
+	box-shadow: 0px 0px 10px rgb(146, 150, 146);
+}
+
+.btn {
+	align-self: flex-end;
+	margin-top: 30px;
+}
+#create {
+	display: inline-block;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 25px 20px;
+	border-radius: 10px;
+	background-color: rgb(25, 192, 53);
+	color: #fff;
+}
+#create:hover {
+	background-color: rgb(24, 155, 46);
+	transition: background-color 100ms linear;
+}
+
+input::placeholder,
+input::-moz-placeholder,
+input::-webkit-input-placeholder,
+textarea::placeholder,
+textarea::-moz-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #7d7d7d;
+	opacity: 1;
+}
+
+input:focus::placeholder,
+input:focus::-moz-placeholder,
+textarea:focus::placeholder,
+textarea:focus::-moz-placeholder {
+	opacity: 0.5;
+}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+	opacity: 0.5;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px rgb(43, 43, 43) inset !important;
+	-webkit-text-fill-color: #fff;
+}
+
+::-webkit-scrollbar {
+	width: 18px;
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.685);
+}
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(139, 126, 126, 0.719);
+}
+
+@media (max-width: 900px) {
+	label {
+		font-size: 18px !important;
+		align-self: center;
+	}
+
+	input,
+	select,
+	textarea {
+		font-size: 16px !important;
+		min-height: 30px !important;
+	}
+
+	.container {
+		padding: 30px;
+	}
+
+	.title {
+		text-align: center;
+		font-size: 30px;
+	}
+
+	.btn {
+		align-self: center;
+	}
+	#create {
+		font-size: 18px;
+		padding: 20px 15px;
+	}
+}
+
+@media (min-width: 2000px) {
+	.gradient {
+		padding-top: 5%;
+	}
+	.container {
+		max-width: 60%;
+	}
+}
+
+@media (min-width: 2200px) {
+	.container {
+		max-width: 52%;
+	}
+}
