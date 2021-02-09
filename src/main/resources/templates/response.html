@@ -8,9 +8,10 @@
 </head>
 <body>
     <div>Ticket is created successfully!</div>
-    <p th:text="${ticket}"/>
     <p th:text="'Summary: ' + ${ticket.summary}" />
     <p th:text="'Type: ' + ${ticket.type}"/>
+    <p th:text="'Priority: ' + ${ticket.priority}"/>
+    <p th:text="'Status: ' + ${ticket.status}"/>
     <p th:text="'Description: ' + ${ticket.description}"/>
 </body>
 </html>

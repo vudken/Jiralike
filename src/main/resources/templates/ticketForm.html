@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
-    <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <link rel="shortcut icon" type="image/jpg" href="../static/img/tick.png"/>
+    <link th:href="@{/css/reset.css}" rel="stylesheet"    type="text/css"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"    type="text/css"/>
+    <link th:href="@{/img/tick.png}"  rel="shortcut icon" type="image/jpg"/>
     <title>Ticket</title>
 </head>
 
@@ -14,18 +14,17 @@
 <div class="wrapper">
     <div class="gradient">
         <div class='container'>
-            <form id="ticket-form" th:action="@{/ticketForm}" th:object="${ticket}" method="POST">
+            <form id="ticket-form" method="POST">
                 <ul class="ticket-flex">
                     <h1 class="title">Ticket</h1>
                     <li>
                         <label for="summary">Summary</label>
-                        <input th:field="*{summary}" type="text" id="summary" name="summary" autofocus
-                               placeholder="Please type a summary of the ticket..."
-                               onblur="this.placeholder='Please type a summary of the ticket...'"/>
+                        <input id="summary" name="summary" type="text" autofocus required
+                               placeholder="Please type a summary of the ticket..."/>
                     </li>
                     <li>
                         <label for="type">Type</label>
-                        <select th:field="*{type}" required id="type" name="type">
+                        <select id="type" name="type" required>
                             <option value="" selected disabled hidden>Select an Option</option>
                             <option value="epic">Epic</option>
                             <option value="story">Story</option>
@@ -35,8 +34,8 @@
                         </select>
                     </li>
                     <li>
-                        <label  for="priority">Priority</label>
-                        <select th:field="*{priority}" required id="priority" name="priority">
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority" required>
                             <option value="" selected disabled hidden>Select an Option</option>
                             <option value="critical">Critical</option>
                             <option value="major">Major</option>
@@ -46,7 +45,7 @@
                     </li>
                     <li>
                         <label for="status">Status</label>
-                        <select th:field="*{status}" required id="status" name="status">
+                        <select id="status" name="status" required>
                             <option value="" selected disabled hidden>Select an Option</option>
                             <option value="open">Open</option>
                             <option value="in-progress">In Progress</option>
@@ -66,11 +65,11 @@
                     <!--						</li>-->
                     <li>
                         <label for="description">Description</label>
-                        <textarea th:field="*{description}" id="description" name="description" rows="5" maxlength="500"
+                        <textarea id="description" name="description" rows="5" maxlength="500"
                                   placeholder="Write a description of the ticket..."></textarea>
                     </li>
                     <div class="btn">
-                        <input id="create" type="submit" value="Create New Ticket" />
+                        <button id="create" type="submit">Create New Ticket</button>
                     </div>
                 </ul>
             </form>

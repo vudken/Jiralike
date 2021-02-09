@@ -61,6 +61,10 @@ select:invalid option:not(:disabled) {
 	align-self: center;
 }
 
+.error {
+	color: #f00;
+}
+
 .ticket-flex li {
 	display: inherit;
 	flex-wrap: wrap;
