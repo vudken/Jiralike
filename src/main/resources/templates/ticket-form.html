@@ -2,83 +2,81 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<link rel="stylesheet" href="../static/css/reset.css" />
-	<link rel="stylesheet" href="../static/css/style.css" />
-	<link rel="shortcut icon" type="image/jpg" href="../static/img/tick.png" />
-	<title>Ticket</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" type="image/jpg" href="../static/img/tick.png"/>
+    <title>Ticket</title>
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="gradient">
-			<div class='container'>
-				<form id="ticket-form" action="#" method="POST">
-					<ul class="ticket-flex">
-						<h1 class="title">Ticket</h1>
-						<li>
-							<label for="summary">Summary</label>
-							<input type="text" id="summary" name="summary" autofocus
-								placeholder="Please type a summary of the ticket..."
-								onblur="this.placeholder='Please type a summary of the ticket...'" />
-						</li>
-						<li>
-							<label for="type">Type</label>
-							<select required id="type" name="type">
-								<option value="" selected disabled hidden>Select an Option</option>
-								<option value="epic">Epic</option>
-								<option value="story">Story</option>
-								<option value="task">Task</option>
-								<option value="subtask">Subtask</option>
-								<option value="bug">Bug</option>
-							</select>
-						</li>
-						<li>
-							<label for="priority">Priority</label>
-							<select required id="priority" name="priority">
-								<option value="" selected disabled hidden>Select an Option</option>
-								<option value="critical">Critical</option>
-								<option value="major">Major</option>
-								<option value="minor">Minor</option>
-								<option value="trivial">Trivial</option>
-							</select>
-						</li>
-						<li>
-							<label for="status">Status</label>
-							<select required id="status" name="status">
-								<option value="" selected disabled hidden>Select an Option</option>
-								<option value="open">Open</option>
-								<option value="in-progress">In Progress</option>
-								<option value="to-do">To Do</option>
-								<option value="done">Done</option>
-							</select>
-						</li>
-						<li>
-							<label for="project">Project</label>
-							<select required id="project" name="project">
-								<option value="" selected disabled hidden>Select an Option</option>
-								<option value="test">Open</option>
-								<option value="test">In Progress</option>
-								<option value="test">To Do</option>
-								<option value="test">Done</option>
-							</select>
-						</li>
-						<li>
-							<label for="description">Description</label>
-							<textarea id="description" name="description" rows="5" maxlength="500"
-								placeholder="Write a description of the ticket..."></textarea>
-						</li>
-						<div class="btn">
-							<a href="#" target="_blank" rel="noopener noreferrer" id="create">
-								Create New Ticket
-							</a>
-						</div>
-					</ul>
-				</form>
-			</div>
-		</div>
-	</div>
+<div class="wrapper">
+    <div class="gradient">
+        <div class='container'>
+            <form id="ticket-form" th:action="@{/ticketForm}" th:object="${ticket}" method="POST">
+                <ul class="ticket-flex">
+                    <h1 class="title">Ticket</h1>
+                    <li>
+                        <label for="summary">Summary</label>
+                        <input th:field="*{summary}" type="text" id="summary" name="summary" autofocus
+                               placeholder="Please type a summary of the ticket..."
+                               onblur="this.placeholder='Please type a summary of the ticket...'"/>
+                    </li>
+                    <li>
+                        <label for="type">Type</label>
+                        <select th:field="*{type}" required id="type" name="type">
+                            <option value="" selected disabled hidden>Select an Option</option>
+                            <option value="epic">Epic</option>
+                            <option value="story">Story</option>
+                            <option value="task">Task</option>
+                            <option value="subtask">Subtask</option>
+                            <option value="bug">Bug</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label  for="priority">Priority</label>
+                        <select th:field="*{priority}" required id="priority" name="priority">
+                            <option value="" selected disabled hidden>Select an Option</option>
+                            <option value="critical">Critical</option>
+                            <option value="major">Major</option>
+                            <option value="minor">Minor</option>
+                            <option value="trivial">Trivial</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="status">Status</label>
+                        <select th:field="*{status}" required id="status" name="status">
+                            <option value="" selected disabled hidden>Select an Option</option>
+                            <option value="open">Open</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="to-do">To Do</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </li>
+                    <!--						<li>-->
+                    <!--							<label for="project">Project</label>-->
+                    <!--							<select required id="project" name="project">-->
+                    <!--								<option value="" selected disabled hidden>Select an Option</option>-->
+                    <!--								<option value="test">Open</option>-->
+                    <!--								<option value="test">In Progress</option>-->
+                    <!--								<option value="test">To Do</option>-->
+                    <!--								<option value="test">Done</option>-->
+                    <!--							</select>-->
+                    <!--						</li>-->
+                    <li>
+                        <label for="description">Description</label>
+                        <textarea th:field="*{description}" id="description" name="description" rows="5" maxlength="500"
+                                  placeholder="Write a description of the ticket..."></textarea>
+                    </li>
+                    <div class="btn">
+                        <input id="create" type="submit" value="Create New Ticket" />
+                    </div>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
