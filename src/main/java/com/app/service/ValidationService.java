@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 public class ValidationService {
 
     public boolean validateTicket(Ticket ticket) {
-        return  ticket.getSummary() != null && ticket.getSummary().length() >= 3 &&
+        return  ticket.getSummary() != null &&
+                ticket.getSummary().length() >= 3 &&
                 !ticket.getType().isEmpty() &&
                 !ticket.getPriority().isEmpty() &&
                 !ticket.getStatus().isEmpty();
