@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import com.app.model.Ticket;
+import com.app.service.TicketService;
 import com.app.service.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class TicketFormController {
     @Autowired
     private ValidationService validationService;
 
+    @Autowired
+    private TicketService ticketService;
+
     @GetMapping("/ticketForm")
     public String getTicketForm(Model model) {
         model.addAttribute("ticket", new Ticket());
@@ -27,6 +31,7 @@ public class TicketFormController {
             return "ticketForm.html";
         }
         model.addAttribute("ticket", ticket);
+        ticketService.saveTicket(ticket);
         return "response.html";
     }
 }

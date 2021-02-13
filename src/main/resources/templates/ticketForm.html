@@ -2,87 +2,70 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <link   th:href="@{/css/reset.css}" rel="stylesheet"    type="text/css"/>
-    <link   th:href="@{/css/style.css}" rel="stylesheet"    type="text/css"/>
-    <link   th:href="@{/img/tick.png}"  rel="shortcut icon" type="image/jpg"/>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link   th:href="@{/css/reset.css}" rel="stylesheet"    type="text/css" />
+	<link   th:href="@{/css/style.css}" rel="stylesheet"    type="text/css" />
+	<link   th:href="@{/img/tick.png}"  rel="shortcut icon" type="image/jpg" />
 	<script th:src="@{/js/jquery.min.js}"></script>
 	<script th:src="@{/js/jquery.validate.min.js}"></script>
 	<script th:src="@{/js/main.js}"></script>
-    <title>Ticket</title>
+	<title>Ticket</title>
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="gradient">
-        <div class='container'>
-            <form id="ticket-form" method="POST">
-                <ul class="ticket-flex">
-                    <h1 class="title">Ticket</h1>
-                    <li>
-						<label for="summary">Summary</label>
-                        <input id="summary" name="summary" type="text" required autofocus 
-						placeholder="Type a summary of the ticket"/>
-                    </li>
-					<div id="summary_validate" class="errors"></div>
-                    <li>
-						<label for="type">Type</label>
-                        <select id="type" name="type" required>
-							<option value="" selected disabled hidden>Select an Option</option>
-                            <option value="epic">Epic</option>
-                            <option value="story">Story</option>
-                            <option value="task">Task</option>
-                            <option value="subtask">Subtask</option>
-                            <option value="bug">Bug</option>
-                        </select>
-                    </li>
-					<div id="type_validate" class="errors"></div>
-                    <li>
-						<label for="priority">Priority</label>
-                        <select id="priority" name="priority" required>
-							<option value="" selected disabled hidden>Select an Option</option>
-                            <option value="critical">Critical</option>
-                            <option value="major">Major</option>
-                            <option value="minor">Minor</option>
-                            <option value="trivial">Trivial</option>
-                        </select>
-                    </li>
-					<div id="priority_validate" class="errors"></div>
-                    <li>
-						<label for="status">Status</label>
-                        <select id="status" name="status" required>
-							<option value="" selected disabled hidden>Select an Option</option>
-                            <option value="open">Open</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="to-do">To Do</option>
-                            <option value="done">Done</option>
-                        </select>
-                    </li>
-					<div id="status_validate" class="errors"></div>
-                    <!--						<li>-->
-                    <!--							<label for="project">Project</label>-->
-                    <!--							<select required id="project" name="project">-->
-                    <!--								<option value="" selected disabled hidden>Select an Option</option>-->
-                    <!--								<option value="test">Open</option>-->
-                    <!--								<option value="test">In Progress</option>-->
-                    <!--								<option value="test">To Do</option>-->
-                    <!--								<option value="test">Done</option>-->
-                    <!--							</select>-->
-                    <!--						</li>-->
-                    <li>
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" rows="5" maxlength="500"
-                                  placeholder="Write a description of the ticket"></textarea>
-                    </li>
-                    <div class="btn">
-                        <button id="create" type="submit">Create New Ticket</button>
-                    </div>
-                </ul>
-            </form>
-        </div>
-    </div>
-</div>
+	<div class="wrapper">
+		<div class="gradient">
+			<div class='container'>
+				<form th:action="@{/ticketForm}" id="ticket-form" method="POST">
+					<ul class="ticket-flex">
+						<h1 class="title">Ticket</h1>
+						<li>
+							<label for="summary">Summary</label>
+							<input id="summary" name="summary" type="text" required autofocus
+								placeholder="Type a summary of the ticket" />
+						</li>
+						<div id="summary_validate" class="errors"></div>
+						<li>
+							<label for="type">Type</label>
+							<select id="type" name="type" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+							</select>
+						</li>
+						<div id="type_validate" class="errors"></div>
+						<li>
+							<label for="priority">Priority</label>
+							<select id="priority" name="priority" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+							</select>
+						</li>
+						<div id="priority_validate" class="errors"></div>
+						<li>
+							<label for="status">Status</label>
+							<select id="status" name="status" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+							</select>
+						</li>
+						<div id="status_validate" class="errors"></div>
+						<!--<li>
+							<label for="project">Project</label>
+							<select required id="project" name="project">
+								<option value="" selected disabled hidden>Select Project</option>
+							</select>
+						</li>-->
+						<li>
+							<label for="description">Description</label>
+							<textarea id="description" name="description" rows="5" maxlength="500"
+								placeholder="Write a description of the ticket"></textarea>
+						</li>
+						<div class="btn">
+							<button id="create" type="submit">Create New Ticket</button>
+						</div>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
