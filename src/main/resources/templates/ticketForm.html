@@ -30,6 +30,9 @@
 							<label for="type">Type</label>
 							<select id="type" name="type" required>
 								<option value="" selected disabled hidden>Select an Option</option>
+								<option th:each="typeOpt : ${T(com.app.model.enums.Type).values()}"
+										th:value="${#strings.toLowerCase(typeOpt.displayValue)}" th:text="${typeOpt.displayValue}"></option>
+							</select>
 							</select>
 						</li>
 						<div id="type_validate" class="errors"></div>
@@ -37,6 +40,9 @@
 							<label for="priority">Priority</label>
 							<select id="priority" name="priority" required>
 								<option value="" selected disabled hidden>Select an Option</option>
+								<option th:each="priorityOpt : ${T(com.app.model.enums.Priority).values()}"
+										th:value="${#strings.toLowerCase(priorityOpt.displayValue)}" th:text="${priorityOpt.displayValue}"></option>
+							</select>
 							</select>
 						</li>
 						<div id="priority_validate" class="errors"></div>
@@ -44,15 +50,18 @@
 							<label for="status">Status</label>
 							<select id="status" name="status" required>
 								<option value="" selected disabled hidden>Select an Option</option>
-							</select>
+								<option th:each="statusOpt : ${T(com.app.model.enums.Status).values()}"
+										th:value="${#strings.toLowerCase(statusOpt.displayValue)}" th:text="${statusOpt.displayValue}"></option>
+								</select>
 						</li>
 						<div id="status_validate" class="errors"></div>
-						<!--<li>
-							<label for="project">Project</label>
-							<select required id="project" name="project">
+						<li>
+							<label for="projectId">Project</label>
+							<select th:object="${projects}" id="projectId" name="projectId" required>
 								<option value="" selected disabled hidden>Select Project</option>
+								<option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
 							</select>
-						</li>-->
+						</li>
 						<li>
 							<label for="description">Description</label>
 							<textarea id="description" name="description" rows="5" maxlength="500"

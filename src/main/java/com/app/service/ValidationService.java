@@ -11,6 +11,7 @@ public class ValidationService {
                 ticket.getSummary().length() >= 3 &&
                 !ticket.getType().isEmpty() &&
                 !ticket.getPriority().isEmpty() &&
-                !ticket.getStatus().isEmpty();
+                !ticket.getStatus().isEmpty() &&
+                ticket.getProjectId() > 0;
     }
 }

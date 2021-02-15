@@ -1,11 +1,16 @@
 package com.app.model;
 
+import org.springframework.boot.context.properties.bind.Name;
+
+import java.lang.annotation.Target;
+
 public class Ticket {
 
     private String summary;
     private String type;
     private String priority;
     private String status;
+    private int projectId;
     private String description;
 
     public String getSummary() {
@@ -38,6 +43,14 @@ public class Ticket {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public String getDescription() {

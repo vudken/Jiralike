@@ -1,6 +1,10 @@
 package com.app.controller;
 
+import com.app.model.Project;
 import com.app.model.Ticket;
+import com.app.model.enums.Priority;
+import com.app.model.enums.Status;
+import com.app.model.enums.Type;
 import com.app.service.TicketService;
 import com.app.service.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class TicketFormController {
@@ -21,6 +27,10 @@ public class TicketFormController {
 
     @GetMapping("/ticketForm")
     public String getTicketForm(Model model) {
+        model.addAttribute("type", Type.values());
+        model.addAttribute("priority", Priority.values());
+//        model.addAttribute("status", Status.values());
+        model.addAttribute("projects", ticketService.getProjects());
         model.addAttribute("ticket", new Ticket());
         return "ticketForm.html";
     }
