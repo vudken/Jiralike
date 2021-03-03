@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/img/tick.png}" rel="shortcut icon" type="image/jpg" />
+	<title>Ticket</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="gradient">
+			<div class='container'>
+				<form th:action="@{/createTicket}" id="ticket-form" method="POST">
+					<ul class="flex-container">
+						<h1 class="title">Ticket</h1>
+						<li>
+							<label for="summary">Summary</label>
+							<input id="summary" name="summary" type="text" required autofocus
+								placeholder="Type a summary of the ticket" />
+						</li>
+						<div id="summary_validate" class="errors"></div>
+						<li>
+							<label for="type">Type</label>
+							<select id="type" name="type" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+								<option th:each="typeOpt : ${T(com.app.model.enums.Type).values()}"
+									th:value="${#strings.toLowerCase(typeOpt.displayValue)}"
+									th:text="${typeOpt.displayValue}"></option>
+							</select>
+							</select>
+						</li>
+						<div id="type_validate" class="errors"></div>
+						<li>
+							<label for="priority">Priority</label>
+							<select id="priority" name="priority" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+								<option th:each="priorityOpt : ${T(com.app.model.enums.Priority).values()}"
+									th:value="${#strings.toLowerCase(priorityOpt.displayValue)}"
+									th:text="${priorityOpt.displayValue}"></option>
+							</select>
+							</select>
+						</li>
+						<div id="priority_validate" class="errors"></div>
+						<li>
+							<label for="status">Status</label>
+							<select id="status" name="status" required>
+								<option value="" selected disabled hidden>Select an Option</option>
+					 			<option th:each="statusOpt : ${T(com.app.model.enums.Status).values()}"
+									th:value="${#strings.toLowerCase(statusOpt.displayValue)}"
+									th:text="${statusOpt.displayValue}"></option>
+							</select>
+						</li>
+						<div id="status_validate" class="errors"></div>
+						<li>
+							<label for="projectId">Project</label>
+							<select th:object="${projects}" id="projectId" name="projectId" required>
+								<option value="" selected disabled hidden>Select Project</option>
+								<option th:each="project : ${projects}" th:value="${project.id}"
+									th:text="${project.name}"></option>
+							</select>
+						</li>
+						<div id="projectId_validate" class="errors"></div>
+						<li>
+							<label for="assignedToId">Assigned to</label>
+							<select th:object="${users}" id="assignedToId" name="assignedToId" required>
+								<option value="" selected disabled hidden>Select Assignee</option>
+								<option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+							</select>
+						</li>
+						<div id="assignedToId_validate" class="errors"></div>
+						<li>
+							<label for="description">Description</label>
+							<textarea id="description" name="description" rows="5" maxlength="500"
+								placeholder="Write a description of the ticket"></textarea>
+						</li>
+						<div class="btn">
+							<button id="create" type="submit">Create New Ticket</button>
+						</div>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.validate.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>
