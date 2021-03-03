@@ -21,4 +21,8 @@ public class TicketService {
     public List<Project> getProjects() {
         return ticketDAO.getProjects();
     }
+
+    public List<Ticket> getAllTickets() {
+        return ticketDAO.getAllTickets();
+    }
 }

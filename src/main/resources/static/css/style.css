@@ -44,7 +44,8 @@ select:invalid option:not(:disabled) {
 	max-width: 65%;
 	padding: 2% 4%;
 	border-radius: 10px;
-	background: rgba(129, 128, 128, 0.4);
+	background: #50505073;
+	/* background: rgba(129, 128, 128, 0.4); */
 	backdrop-filter: blur(2px);
 	color: #fff;
 }
@@ -54,7 +55,7 @@ select:invalid option:not(:disabled) {
 	src: url("../fonts/Gotham-Bold.otf");
 }
 
-.ticket-flex {
+.flex-container {
 	display: flex;
 	flex-flow: column wrap;
 }
@@ -66,11 +67,11 @@ select:invalid option:not(:disabled) {
 	align-self: center;
 }
 
-.ticket-flex li {
+.flex-container li {
 	display: inherit;
 	flex-wrap: wrap;
 }
-.ticket-flex > li > label {
+.flex-container > li > label {
 	flex: 1 0 auto;
 	justify-content: flex-end;
 	max-width: 20%;
@@ -80,7 +81,7 @@ select:invalid option:not(:disabled) {
 	font-size: 27px;
 	font-family: Gotham-Bold;
 }
-.ticket-flex > li > :not(label) {
+.flex-container > li > :not(label) {
 	flex: 1 0 auto;
 	display: inline-block;
 	max-width: 80%;
@@ -96,7 +97,7 @@ select:invalid option:not(:disabled) {
 	line-height: 25px;
 	background-color: rgb(43, 43, 43);
 }
-.ticket-flex > li > :not(label):focus {
+.flex-container > li > :not(label):focus {
 	box-shadow: 0px 0px 10px rgb(146, 150, 146);
 }
 

@@ -18,19 +18,17 @@ public class TicketDAO {
     JdbcTemplate jdbcTemplate;
 
     public void saveTicket(Ticket ticket) {
-
-        final String SQL_INSERT_TICKET = " INSERT INTO ticket (summary, type_id, priority_id, status_id, project_id, description)" +
-                                         " SELECT ?, t.id, p.id, s.id, ?, ?" +
-                                         " FROM type as t, priority as p, status as s" +
-                                         " WHERE t.name=? AND p.name=? AND s.name=?";
+        final String SQL_INSERT_TICKET = "INSERT INTO ticket (summary, type, priority, status, project_id, assigned_to_user_id, description) " +
+                                         "SELECT ?, ?::ticket_type, ?::ticket_priority, ?::ticket_status, ?, ?, ?";
 
         jdbcTemplate.update(SQL_INSERT_TICKET,
                 ticket.getSummary(),
-                ticket.getProjectId(),
-                ticket.getDescription(),
                 ticket.getType(),
                 ticket.getPriority(),
-                ticket.getStatus()
+                ticket.getStatus(),
+                ticket.getProjectId(),
+                ticket.getAssignedToId(),
+                ticket.getDescription()
         );
     }
 
@@ -45,5 +43,37 @@ public class TicketDAO {
         final String SQL_SELECT_PROJECTS = "SELECT * FROM project";
         RowMapper<Project> rowMapper = (rs, rowNumber) -> mapProject(rs);
         return jdbcTemplate.query(SQL_SELECT_PROJECTS, rowMapper);
+    }
+
+    private Ticket mapTicket(ResultSet rs) throws SQLException {
+        Ticket ticket = new Ticket();
+        ticket.setId(rs.getInt("id"));
+        ticket.setSummary(rs.getString("summary"));
+        ticket.setType(rs.getString("type"));
+        ticket.setPriority(rs.getString("priority"));
+        ticket.setStatus(rs.getString("status"));
+        ticket.setProjectId(rs.getInt("project_id"));
+        ticket.setProjectName(rs.getString("project_name"));
+        ticket.setDescription(rs.getString("description"));
+        ticket.setAssignedToId(rs.getInt("assigned_to_user_id"));
+        ticket.setReportedById(rs.getInt("reported_by_user_id"));
+        ticket.setAssignedToUsername(rs.getString("assigned_to_username"));
+        ticket.setReportedByUsername(rs.getString("reported_by_username"));
+        return ticket;
+    }
+
+    public List<Ticket> getAllTickets() {
+        final String SQL_SELECT_ALL_TICKETS = "SELECT t.id, t.summary, type, priority, status, t.project_id, " +
+                                                     "t.description, t.assigned_to_user_id, t.reported_by_user_id, " +
+                                                     "p.name AS project_name, " +
+                                                     "u1.username AS assigned_to_username, " +
+                                                     "u2.username AS reported_by_username " +
+                                              "FROM ticket t " +
+                                              "LEFT JOIN project p ON t.project_id = p.id " +
+                                              "LEFT JOIN users u1 ON t.assigned_to_user_id = u1.id " +
+                                              "LEFT JOIN users u2 ON t.reported_by_user_id = u2.id;";
+
+        RowMapper<Ticket> rowMapper = (rs, rowNumber) -> mapTicket(rs);
+        return jdbcTemplate.query(SQL_SELECT_ALL_TICKETS, rowMapper);
     }
 }

@@ -1,17 +1,27 @@
 package com.app.model;
 
-import org.springframework.boot.context.properties.bind.Name;
-
-import java.lang.annotation.Target;
-
 public class Ticket {
 
+    private int id;
     private String summary;
     private String type;
     private String priority;
     private String status;
     private int projectId;
+    private String projectName;
     private String description;
+    private int assignedToId;
+    private int reportedById;
+    private String assignedToUsername;
+    private String reportedByUsername;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSummary() {
         return summary;
@@ -53,11 +63,51 @@ public class Ticket {
         this.projectId = projectId;
     }
 
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getAssignedToId() {
+        return assignedToId;
+    }
+
+    public void setAssignedToId(int assignedToId) {
+        this.assignedToId = assignedToId;
+    }
+
+    public int getReportedById() {
+        return reportedById;
+    }
+
+    public void setReportedById(int reportedById) {
+        this.reportedById = reportedById;
+    }
+
+    public String getAssignedToUsername() {
+        return assignedToUsername;
+    }
+
+    public void setAssignedToUsername(String assignedToUsername) {
+        this.assignedToUsername = assignedToUsername;
+    }
+
+    public String getReportedByUsername() {
+        return reportedByUsername;
+    }
+
+    public void setReportedByUsername(String reportedByUsername) {
+        this.reportedByUsername = reportedByUsername;
     }
 }
