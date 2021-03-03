@@ -20,7 +20,7 @@ function sortByColumn() {
 			if (a.querySelector(sortSelector).innerHTML < b.querySelector(sortSelector).innerHTML) {
 				return -1;
 			} else {
-				return1;
+				return 1;
 			}
 		}
 	});
