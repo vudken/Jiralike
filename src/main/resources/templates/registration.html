@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<title>Getting Started: Handling Form Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="../static/css/reset.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="gradient">
+			<div class='container narrow registration'>
+				<h1 class="title">Registration</h1>
+				<form class="form" th:action="@{/registration}" th:object="${registration}" method="post">
+					<ul class="flex-container">
+						<li>
+							<label for="name">Name</label>
+							<input id="name" name="name" type="text" th:field="*{name}" required autofocus />
+						</li>
+						<div id="name_validate" class="errors"></div>
+						<li>
+							<label for="surname">Surname</label>
+							<input id="surname" name="surname" type="text" th:field="*{surname}" required />
+						</li>
+						<div id="surname_validate" class="errors"></div>
+						<li>
+							<label for="username">Username</label>
+							<input id="username" name="username" type="text" th:field="*{username}" required />
+						</li>
+						<div id="username_validate" class="errors"></div>
+						<li>
+							<label for="password">Password</label>
+							<input id="password" name="password" type="password" th:field="*{password}" required />
+						</li>
+						<div id="password_validate" class="errors"></div>
+						<li>
+							<label for="email">Email</label>
+							<input id="email" name="email" type="text" th:field="*{email}" required />
+						</li>
+						<div id="email_validate" class="errors"></div>
+						<button class="btn" type="submit">Sign Up</button>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.validate.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/img/tick.png}" rel="shortcut icon" type="image/jpg" />
+	<title>Login</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="gradient">
+			<div class='container narrow'>
+				<h1 class="title">Login</h1>
+				<form class="form" th:action="@{/login}" th:object="${login}" method="post">
+					<ul class="flex-container">
+						<li>
+							<label for="username">Username</label>
+							<input id="username" name="username" type="text" th:field="*{username}" required
+								autofocus />
+						</li>
+						<div id="username_validate" class="errors"></div>
+						<li>
+							<label for="password">Password</label>
+							<input id="password" name="password" type="password" th:field="*{password}" />
+						</li>
+						<div id="password_validate" class="errors" required></div>
+						<!-- TO DO -->
+						<!-- <div class="errors">Wrong username or password</div> -->
+						<button id="sign-in" class="btn" type="submit">Sign In</button>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.validate.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>
